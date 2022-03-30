@@ -33,6 +33,7 @@ local _tr = Gatherer.Locale.Tr
 local _trC = Gatherer.Locale.TrClient
 local _trL = Gatherer.Locale.TrLocale
 
+
 -- reference to HereBeDragons
 local HBD = LibStub("HereBeDragons-2.0")  
 local HBDP = LibStub("HereBeDragons-Pins-2.0")  
@@ -63,7 +64,9 @@ function Gatherer.MapNotes.Update()
 	end
 end
 
-hooksecurefunc(WorldMapFrame.UIElementsFrame.TrackingOptionsButton.DropDown, "initialize", function()
+-- seems like hooksecurefunc is rarely used now for adding buttons and such to the map
+-- gonna try the new template syntax
+hooksecurefunc(WorldMapFrame.UIElementsFrame.TrackingOptionsButton.DropDown , "initialize", function()
 	UnitPopup_AddDropDownButton({}, UnitPopupButtons["SUBSECTION_SEPARATOR"], "SUBSECTION_SEPARATOR", UIDROPDOWNMENU_MENU_LEVEL);
 	local info = {}
 	info.text = _tr("BINDING_HEADER_GATHERER")..": ".._tr("MAP_NOTES_SHOW")
@@ -74,6 +77,8 @@ hooksecurefunc(WorldMapFrame.UIElementsFrame.TrackingOptionsButton.DropDown, "in
 	info.keepShownOnClick = 1
 	UIDropDownMenu_AddButton(info)
 end)
+
+
 
 
 function Gatherer.MapNotes.GetNoteObject( noteNumber )
@@ -152,7 +157,7 @@ function Gatherer.MapNotes.MapDraw()
 							mainNote:EnableMouse(false)
 						end
 						
-						HBDPins:AddWorldMapIconMap(self, WorldMapButton, mapID,xPos, yPos, showFlag, frameLevel)
+						HBDPins:AddWorldMapIconMap(self, WorldMapButton, mapID,xPos, yPos, 1)
 						--Astrolabe:PlaceIconOnWorldMap(WorldMapButton, mainNote, mapID, mapFloor, xPos, yPos)
 					else -- reached note limit
 						break

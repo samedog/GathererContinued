@@ -55,12 +55,12 @@ function public.Toggle()
 	end
 end
 
---CreateFrame("Frame", name.."Backdrop", gui, BackdropTemplateMixin and "BackdropTemplate")
+
 private.frame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
 
 local frame = private.frame
 
---local frame = CreateFrame("Frame", nil, frame, "BackdropTemplate")
+
 
 local backdropInfo = {
 		bgFile = "Interface/Tooltips/ChatBubble-Background",

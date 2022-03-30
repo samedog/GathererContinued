@@ -80,13 +80,13 @@ GatherMapNotes.xml
 GatherMiniIcon.lua
 GatherMiniNotes.xml
 GatherPlugins.lua
-GatherReport.lua
+# GatherReport.lua
 GatherSpecialCases.lua
 GatherTooltip.lua
 GathererNodeSearch.lua
 
 # Reports
-# Reports\Load.xml
+#Reports\Load.xml
 
 # Import modules
 # Import\ImportModules.xml

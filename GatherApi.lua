@@ -60,7 +60,7 @@ function Gatherer.Api.AddGather(objectId, gatherType, indoorNode, gatherSource, 
 	end
 	
 	if not (gatherZoneToken and gatherX and gatherY) then
-		--print("Gatherer could not get zone information")
+		print("Gatherer could not get zone information")
 		return
 	end
 	
@@ -91,7 +91,7 @@ function Gatherer.Api.AddGather(objectId, gatherType, indoorNode, gatherSource, 
 			Gatherer.Comm.Send(objectId, gatherType, indoorNode, gatherZoneToken, gatherX, gatherY, index)
 		end
 	else
-		--print("Gatherer objectID was not a number")
+		print("Gatherer objectID was not a number")
 	end
 	
 	Gatherer.MiniNotes.ForceUpdate()
