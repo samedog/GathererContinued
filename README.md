@@ -3,7 +3,9 @@ Just trying to make Gatherer work on 9.x.x with 0 wow addon exprience
 
 TODO:
 
+- fix hooksecurefunc() or replace with another method  [:o:]
 - config window             [:heavy_check_mark:]
+- CreateFrame() to syntax   [:o:]
 - node search window        [:o:]
 - report window             [:o:]
 - minimap icons             [:x:]
@@ -14,5 +16,8 @@ TODO:
 - Atrolabe to HereBeDragons [:o:]
 
 :heavy_check_mark: is done
+
 :o: is WIP
+
 :x: is not working
+
