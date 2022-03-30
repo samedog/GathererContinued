@@ -63,7 +63,7 @@ function Gatherer.MapNotes.Update()
 	end
 end
 
-hooksecurefunc(WorldMapFrame, "RefreshOverlayFrames", function()
+hooksecurefunc(WorldMapFrame.UIElementsFrame.TrackingOptionsButton.DropDown, "initialize", function()
 	UnitPopup_AddDropDownButton({}, UnitPopupButtons["SUBSECTION_SEPARATOR"], "SUBSECTION_SEPARATOR", UIDROPDOWNMENU_MENU_LEVEL);
 	local info = {}
 	info.text = _tr("BINDING_HEADER_GATHERER")..": ".._tr("MAP_NOTES_SHOW")
