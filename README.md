@@ -1,5 +1,6 @@
 # GathererContinued
 Just trying to make Gatherer work on 9.x.x with 0 wow addon exprience
+Astrolabe is kept to check functions inner workings and make necessary changes to calls.
 
 TODO:
 
