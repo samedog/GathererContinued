@@ -5,7 +5,7 @@ TODO:
 
 - fix hooksecurefunc() or replace with another method  [:o:]
 - config window             [:heavy_check_mark:]
-- CreateFrame() to syntax   [:o:]
+- CreateFrame() to new syntax   [:o:]
 - node search window        [:o:]
 - report window             [:o:]
 - minimap icons             [:x:]
