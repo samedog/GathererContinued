@@ -85,6 +85,7 @@ if (create or update) then
 		myLib.lootSpells = {
 			[GetSpellInfo(2366)] =   "HERB", -- Herb Gathering(Apprentice)
 			[GetSpellInfo(2575)] =   "MINE", -- Mining(Apprentice)
+			[GetSpellInfo(195122)] = "MINE",
 			[GetSpellInfo(7620)] =   "FISH", -- Fishing(Apprentice)
 			[GetSpellInfo(8613)] =   "SKIN", -- Skinning(Apprentice)
 			[GetSpellInfo(1804)] =   "OPEN", -- Pick Lock()

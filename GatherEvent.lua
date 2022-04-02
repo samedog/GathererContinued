@@ -99,20 +99,22 @@ function Gatherer.Event.OnLoad()
 end
 
 function Gatherer.Event.OnEvent( event, ... )
-    print("function Gatherer.Event.OnEvent() loaded")
 	if (event == "PLAYER_ENTERING_WORLD" ) then
 		Gatherer.MiniNotes.Show()
+		print("detected PLAYER_ENTERING_WORLD event")
 
 	elseif (event == "PLAYER_LEAVING_WORLD" ) then
 		Gatherer.MiniNotes.Hide()
-
-	elseif (event == "WORLD_MAP_UPDATE") then
-		Gatherer.MapNotes.MapDraw()
+		print("detected PLAYER_LEAVING_WORLD event")
+	--elseif (event == "WORLD_MAP_UPDATE") then
+	--	Gatherer.MapNotes.MapDraw()
 	
 	elseif ( event == "CLOSE_WORLD_MAP") then
 		Gatherer.MapNotes.MapDraw()
-
+		print("detected CLOSE_WORLD_MAP event")
+		
 	elseif( event == "ADDON_LOADED" ) then
+		print("detected ADDON_LOADED event")
 		local addon = select(1, ...)
 		if (addon and string.lower(addon) == "gatherer") then
 			Gatherer.Event.OnLoad()
@@ -120,29 +122,36 @@ function Gatherer.Event.OnEvent( event, ... )
 		end
 	
 	elseif ( event == "PLAYER_LOGIN" ) then
+		print("detected PLAYER_LOGIN event")
 		Gatherer.Util.StartClientItemCacheRefresh()
 		Gatherer.Util.GetSkills()
 		Gatherer.Util.UpdateTrackingState()
 		Gatherer.Plugins.LoadPluginData() -- * FIX for borked LoadAddOn *
 	
 	elseif ( event == "PLAYER_LOGOUT" ) then
+	    print("detected PLAYER_LOGOUT event")
 		Gatherer.Config.Save()
 		Gatherer.DropRates.Save()
 	
 	elseif ( event == "LEARNED_SPELL_IN_TAB" ) then
+	    print("detected LEARNED_SPELL_IN_TAB event")
 		Gatherer.Util.GetSkills()
 	
 	elseif ( event == "SPELLS_CHANGED" ) then
+	    print("detected SPELLS_CHANGED event")
 		Gatherer.Util.GetSkills()
 	
 	elseif ( event == "SKILL_LINES_CHANGED" ) then
+	    print("detected SKILL_LINES_CHANGED event")
 		Gatherer.Util.GetSkills()
 	
 	elseif ( event == "MINIMAP_UPDATE_TRACKING" ) then
+	    print("detected MINIMAP_UPDATE_TRACKING event")
 		Gatherer.Util.UpdateTrackingState()
 		Gatherer.MiniNotes.ForceUpdate()
 	
 	elseif ( event == "CHAT_MSG_ADDON" ) then
+	    print("detected CHAT_MSG_ADDON event")
 		local prefix, msg, how, who = select(1, ...)
 		if ( prefix == "GathX" ) then
 			Gatherer.Comm.Receive( msg, how, who )
@@ -151,11 +160,13 @@ function Gatherer.Event.OnEvent( event, ... )
 		end
 		
 	elseif ( event == "ZONE_CHANGED_NEW_AREA" ) then
+	    print("detected ZONE_CHANGED_NEW_AREA event")
 		Gatherer.MiniNotes.Show()
 	
 	elseif ( event == "UI_ERROR_MESSAGE" ) then
-		local err_number, msg = select(1, ...)	-- WoW 7.x changed this
 
+		local err_number, msg = select(1, ...)	-- WoW 7.x changed this
+	    print("detected UI_ERROR_MESSAGE event with err_number: "..err_number.." | msg: "..msg)
 -- if we get rid of the message parsing, we can also remove ParseFormattedMessage and related code
 --[[  Old code, no longer reliable because of string use changes
 
@@ -170,6 +181,14 @@ function Gatherer.Event.OnEvent( event, ... )
 			--if (skill) then print("skill matched locked_with_spell_known") end
 		end
 -- ]] --
+
+
+
+        ---THIS SEEMS TO BE IMPORTANT?
+        ---seems like the addon hooks into the chat error messages to add the nodes
+        ---but i haven't been able to get any debug info related to this
+        ---maybe check  the other ghathering addons for insight?
+
 
 		-- LE_GAME_ERR_USE_LOCKED_WITH_SPELL_S = 261, string/name = ERR_USE_LOCKED_WITH_SPELL_S
 		-- see https://www.townlong-yak.com/framexml/live/Helix/LuaEnum.lua
@@ -192,8 +211,12 @@ function Gatherer.Event.OnEvent( event, ... )
 		end
 	
 	elseif ( event == "UNIT_SPELLCAST_SUCCEEDED" ) then
+	    
 		local unit, spellName = ...
+		print("detected spell: "..spellName.."on unit: "..unit)
+		
 		if ( unit == "player" and spellName == Gatherer.Constants.SurveySpellName ) then
+		    print("DETECTED SPELL: "..spellName)
 			GathererFrame:Show()
 			ArchTimer = Gatherer.Config.GetSetting("arch.duration")
 			Gatherer.Var.ArchaeologyActive = true
@@ -207,6 +230,7 @@ function Gatherer.Event.OnEvent( event, ... )
 end
 
 function Gatherer.Event.OnUpdate(elapsed)
+    print("function Gatherer.Event.OnUpdate() with var elapsed: "..elapsed)
 	-- update timers
 	ArchTimer = ArchTimer - elapsed
 	if ( ArchTimer <= 0 ) then
@@ -216,6 +240,7 @@ function Gatherer.Event.OnUpdate(elapsed)
 end
 
 function Gatherer.Event.OnSwag(lootType, lootTable, coinAmount, extraData)
+    print("function Gatherer.Event.OnSwag() with var lootType: "..lootType.." | lootTable: "..lootTable.." | coinAmount: "..coinAmount.." | extraData: "..extraData)
 	Gatherer.Util.Debug("Gatherer.Event.OnSwag", lootType)
 	if (lootType and lootType ~= "KILL") then
 		local node = "Unknown"

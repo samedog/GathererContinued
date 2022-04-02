@@ -41,7 +41,7 @@ local metatable = { __index = getfenv(0) }
 setmetatable( Gatherer.ZoneTokens, metatable )
 setfenv(1, Gatherer.ZoneTokens)
 
-local WORLD_MAP_ID = 946
+local WORLD_MAP_ID = 947
 
 ------ to store GetMapZones
 local mapZonesByContinentID = {}
@@ -86,18 +86,20 @@ end
 
 --------------
 
+--- ZONE TOKENS ARE ALLL WRONG GOTTA UPDATE TO 8.0.1 NEW UiMapIDs
+
 local MapIdToTokenMap = {
-		[14] = "AZEROTH",
+		[947] = "AZEROTH",
 
 	-- Kalimdor
-		[13] = "KALIMDOR",
-		[772] = "AHNQIRAJ_THE_FALLEN_KINGDOM",
-		[894] = "AMMEN_VALE",
-		[43]  = "ASHENVALE",
-		[181] = "AZSHARA",
-		[464] = "AZUREMYST_ISLE",
-		[476] = "BLOODMYST_ISLE",
-		[890] = "CAMP_NARACHE",
+		[12] = "KALIMDOR",
+		[327] = "AHNQIRAJ_THE_FALLEN_KINGDOM",
+		[468] = "AMMEN_VALE",
+		[63]  = "ASHENVALE",
+		[76] = "AZSHARA",
+		[97] = "AZUREMYST_ISLE",
+		[106] = "BLOODMYST_ISLE",
+		[462] = "CAMP_NARACHE",
 		[42]  = "DARKSHORE",
 		[381] = "DARNASSUS",
 		[101] = "DESOLACE",
@@ -160,7 +162,7 @@ local MapIdToTokenMap = {
 		[615] = "SHIMMERING_EXPANSE",
 		[480] = "SILVERMOON",
 		[21]  = "SILVERPINE_FOREST",
-		[301] = "STORMWIND",
+		[84] = "STORMWIND",
 		[689] = "STRANGLETHORN_VALE",
 		[893] = "SUNSTRIDER_ISLE",
 		[38]  = "SWAMP_OF_SORROWS",
@@ -269,6 +271,9 @@ local MapIdToTokenMap = {
         [1533] = "SHADOWLANDS_BASTION",
         [1565] = "SHADOWLANDS_ARDENWEALD",
         [1970] = "SHADOWLANDS_ZERETH_MORTIS",
+  -- Zereth Mortis
+        [2046] = "ZERETH_MORTIS"
+
 }
 
 
@@ -334,7 +339,7 @@ end
 for id, name in pairs(GetMapContinents()) do
     local temporal_list = {}
     for id_, name_ in pairs(GetMapZones(id)) do
-        -- print("continent id: "..id.." | map id: "..id_.." | name: "..name_  )
+        print("continent id: "..id.." | map id: "..id_.." | name: "..name_  )
         table.insert(temporal_list, id_)
         
     end

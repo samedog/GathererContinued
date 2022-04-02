@@ -75,7 +75,7 @@
 	</Button>
 
 	<!-- Parent Frame for all World Map Note Objects -->
-	<Frame name="GathererMapOverlayParent" inherits="GathererMapOverlayTemplate" parent="WorldMapButton">
+	<Frame name="GathererMapOverlayParent" inherits="GathererMapOverlayTemplate" p--arent="WorldMapButton" >
 		<Scripts>
 			<OnShow>
 				Gatherer.MapNotes.MapDraw()

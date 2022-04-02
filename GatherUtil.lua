@@ -28,7 +28,7 @@
 	Utility functions
 ]]
 Gatherer_RegisterRevision("$URL: http://svn.norganna.org/gatherer/tags/REL_7.3.1/Gatherer/GatherUtil.lua $", "$Rev: 1148 $")
-
+print("GatherUtil.lua loaded")
 -- reference to the Astrolabe mapping library
 local HBD = LibStub("HereBeDragons-2.0")  
 local HBDP = LibStub("HereBeDragons-Pins-2.0")  
@@ -106,12 +106,14 @@ if ( tocVersion >= 40000 ) then
 
 
 function Gatherer.Util.GetSkills()
+    print("function Gatherer.Util.GetSkills() called")
 	local ProfessionTextures = Gatherer.Constants.ProfessionTextures;
 	
 	for _, profId in pairs({GetProfessions()}) do
 		local name, texture, skillRank, maxRank = GetProfessionInfo(profId);
 		if ( ProfessionTextures[texture] ) then
 			Gatherer.Var.Skills[ProfessionTextures[texture]] = skillRank;
+			print("on profession: "..name.." | skillrank: "..skillRank)
 		end
 	end
 end
@@ -123,6 +125,7 @@ else
 local checkingSkills = false
 
 function Gatherer.Util.GetSkills()
+    print("function Gatherer.Util.GetSkills() called")
 	if ( checkingSkills ) then return end -- avoid infinate loops
 	checkingSkills = true
 	local GatherExpandedHeaders = {}
@@ -133,7 +136,7 @@ function Gatherer.Util.GetSkills()
 	-- search the skill tree for gathering skills
 	for i=0, GetNumSkillLines(), 1 do
 		local skillName, header, isExpanded, skillRank = GetSkillLineInfo(i)
-	
+	    print("found skill: "..skillName)
 		-- expand the header if necessary
 		if ( header and not isExpanded ) then
 			GatherExpandedHeaders[i] = skillName
@@ -145,9 +148,11 @@ function Gatherer.Util.GetSkills()
 		local skillName, header, _, skillRank = GetSkillLineInfo(i)
 		-- check for the skill name
 		if (skillName and not header) then
+		    print("found skill: "..skillName)
 			if (skillName == Gatherer.Locale.TrClient("TRADE_HERBALISM")) then
 				Gatherer.Var.Skills.HERB = skillRank
 			elseif (skillName == Gatherer.Locale.TrClient("TRADE_MINING")) then
+			    
 				Gatherer.Var.Skills.MINE = skillRank
 			end
 		end
