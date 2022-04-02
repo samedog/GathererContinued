@@ -34,7 +34,7 @@
 ]]
 
 Gatherer.Nodes = {}
-
+print("GatherNodes.lua loaded")
 local region = GetLocale();
 if (region == "deDE") then -- German
 	Gatherer.Nodes.Names = {
@@ -475,6 +475,7 @@ elseif (region == "enUS") then -- English
 
         ["Laestrite Deposit"]		= 349898,
 		["Rich Laestrite Deposit"]	= 349899,
+		["Solenium Deposit"]	= 349980,
 
 	}
 elseif (region == "esES") then -- Spanish
@@ -2949,6 +2950,11 @@ Gatherer.Nodes.Objects = {
 	[246804] = "ARCH",	-- Highmountain Archaeology Find
 	[246812] = "ARCH",	-- Demonic Archaeology Find
 	[256811] = "ARCH",	-- Highborne Archaeology Find
+        --Shadowlands (OBVIOUSLY incomplete)
+
+    [349898] = "MINE",
+	[349899] = "MINE",
+	[349980] = "MINE",
 
 --[[
 

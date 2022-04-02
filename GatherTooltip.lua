@@ -28,7 +28,7 @@
 	Tooltip functions
 ]]
 Gatherer_RegisterRevision("$URL: http://svn.norganna.org/gatherer/tags/REL_7.3.1/Gatherer/GatherTooltip.lua $", "$Rev: 1129 $")
-
+print("GatherTooltips.lua loaded")
 local _tr = Gatherer.Locale.Tr
 local _trC = Gatherer.Locale.TrClient
 local _trL = Gatherer.Locale.TrLocale
@@ -37,6 +37,7 @@ setmetatable(Gatherer.Tooltip, {__index = getfenv(0)})
 setfenv(1, Gatherer.Tooltip)
 
 function AddDropRates( tooltip, nodeId, zone, maxDropsToShow )
+    print("called function AddDropRates with vars: tooltip: "..tooltip.." | nodeId: "..nodeId.." | zone: "..zone.." | maxDropsToShow: "..maxDropsToShow)
 	if not ( maxDropsToShow ) then maxDropsToShow = 5 end
 	local total = Gatherer.DropRates.GetDropsTotal(nodeId)
 	if ( total and (total > 0) ) then

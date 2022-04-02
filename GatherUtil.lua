@@ -223,10 +223,12 @@ for name, objid in pairs(Gatherer.Nodes.Names) do
 	nodeNames[objid] = name
 end
 function Gatherer.Util.GetNodeName(objectID)
+    print("called function Gatherer.Util.GetNodeName() whith vars: objectID: "..objectID)
 	return nodeNames[objectID] or ("Unknown: "..objectID)
 end
 
 function Gatherer.Util.BuildLoot(coins, ...)
+    print("called function Gather.Util.BuildLoot()")
 	local loot = {}
 	coins = tonumber(coins) or 0
 	for i=1, select("#", ...) do
@@ -242,6 +244,7 @@ function Gatherer.Util.BuildLoot(coins, ...)
 end
 
 function Gatherer.Util.LootSplit(lootString)
+    print("called function Gatherer.Util.LootSplit() with var lootString: "..lootString)
 	return Gatherer.Util.BuildLoot(strsplit(":", lootString))
 end
 

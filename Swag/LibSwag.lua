@@ -444,5 +444,6 @@ end
 
 if (nLog) then
 	log = function(ltype, level, title, ...) nLog.AddMessage("Swag", ltype, level, title, ...) end
+	print("Swag", ltype, level, title, ...)
 else log = function() end end
 

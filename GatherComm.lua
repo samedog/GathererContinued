@@ -47,7 +47,12 @@ local acceptFrom = {}
 local commVersion = 2
 
 local lastHarvest = {}
+
+
+
+print("GatherComm.lua loaded")
 function Gatherer.Comm.Send( objectId, gatherType, indoorNode, gatherZ, gatherX, gatherY, nodeIndex )
+print("fcuntion Gatherer.Comm.Send called with values: ObjectId: "..objectId.." | GatherType: "..gatherType.." | indoorNode: "..indoorNode.." | gatherZ: "..gatherZ.." | gatherX: "..gatherX.." | gatherY: "..gatherY.." | nodeIndex: "..nodeIndex)
 	if ( type(objectId) == "number" ) then
 		local zoneToken = Gatherer.ZoneTokens.GetZoneToken(gatherZ)
 		

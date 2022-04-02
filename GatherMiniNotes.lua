@@ -28,7 +28,7 @@
 	Minimap Drawing Routines
 ]]
 Gatherer_RegisterRevision("$URL: http://svn.norganna.org/gatherer/tags/REL_7.3.1/Gatherer/GatherMiniNotes.lua $", "$Rev: 1151 $")
-
+print("GatherMiniNotes.lua loaded")
 local _tr = Gatherer.Locale.Tr
 local _trC = Gatherer.Locale.TrClient
 local _trL = Gatherer.Locale.TrLocale
@@ -49,6 +49,11 @@ Gatherer.MiniNotes.Notes = {}
 Gatherer.MiniNotes.ArchNotes = {}
 
 function Gatherer.MiniNotes.OnLoad( frame )
+    print("Called function Gatherer.MiniNotes.OnLoad with values: frame: ")
+    for k,v in pairs(frame) do
+        print("key : "..k)
+    end
+    
 	local function updateProcessingFrameParent()
 		--frame:SetParent(DongleStub(Gatherer.AstrolabeVersion).processingFrame:GetParent()) REWRITE
 	end

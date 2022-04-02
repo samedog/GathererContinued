@@ -48,6 +48,8 @@ local mapZonesByContinentID = {}
 ------
 local allZonesByContinent = {}
 
+print("GatherZoneTokens.lua loaded")
+
 ------------ from libTourist
 function GetMapContinents()
 	local continents = C_Map.GetMapChildrenInfo(WORLD_MAP_ID, Enum.UIMapType.Continent, true)
@@ -273,6 +275,7 @@ local MapIdToTokenMap = {
 -- convert list of zoneID1, zoneName1, zoneID2, zoneName2, etc.
 -- into just a list of zone names
 local function stripZoneIDs(list)
+   print("called function stripZoneIds")
    local temp = {};
    local index = 1;
    local n = select("#", list)

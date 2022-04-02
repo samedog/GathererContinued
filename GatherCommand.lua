@@ -28,7 +28,7 @@
 	Command parsing and processing
 ]]
 Gatherer_RegisterRevision("$URL: http://svn.norganna.org/gatherer/tags/REL_7.3.1/Gatherer/GatherCommand.lua $", "$Rev: 927 $")
-
+print("GatherCommand.lua loaded")
 SLASH_GATHERER1 = "/gather"
 SLASH_GATHERER2 = "/gatherer"
 SlashCmdList["GATHERER"] = function( msg )

@@ -31,7 +31,7 @@
 
 ]]
 Gatherer_RegisterRevision("$URL: http://svn.norganna.org/gatherer/tags/REL_7.3.1/Gatherer/GatherNotifications.lua $", "$Rev: 979 $")
-
+print("GatherNotifications.lua loaded")
 local _tr = Gatherer.Locale.Tr
 local _trC = Gatherer.Locale.TrClient
 local _trL = Gatherer.Locale.TrLocale
@@ -44,6 +44,7 @@ Tooltip = nil -- will be set by the OnLoad function
 Messages = {}
 
 local function DisplayNotification()
+    print("function DisplayNotification() called")
 	if ( IsLoggedIn() and Messages[1] ) then
 		Tooltip:ClearLines()
 		if not ( Tooltip:IsShown() ) then

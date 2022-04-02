@@ -46,7 +46,9 @@ local HBDP = LibStub("HereBeDragons-Pins-2.0")
 --   gatherCoins (number): amount of copper found in the node
 --   gatherLoot (table): a table of loot: { { link, count }, ...}
 --   wasGathered (boolean): was this object actually opened by the player
+print("GatherApi.lua loaded")
 function Gatherer.Api.AddGather(objectId, gatherType, indoorNode, gatherSource, gatherCoins, gatherLoot, wasGathered, gatherC, gatherZ, gatherX, gatherY)
+	print("function AddGather called with parameters= ObjectId: "..objectId.." | indoorNode: "..indoorNode.." | source: "..gatherSource.." | Coins: "..gatherCoins.." | Loot: "..gatherLoot.." | was Gathered: "..wasGathered.." | gatherC: "..gatherC.." | gather Z: "..gatherZ.." | gatherX: "..gatherX.." | gatherY: "..gatherY)
 	local success, gatherZoneToken
 	
 	if not (((gatherC and gatherZ) or (gatherC==nil and gatherZ)) and gatherX and gatherY) then

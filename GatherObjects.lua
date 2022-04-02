@@ -26,7 +26,7 @@
 		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
 ]]
 Gatherer_RegisterRevision("$URL: http://svn.norganna.org/gatherer/tags/REL_7.3.1/Gatherer/GatherObjects.lua $", "$Rev: 754 $")
-
+print("GatherOcjects.lua loaded")
 Gatherer = {
 	Api = {},
 	Categories = {},

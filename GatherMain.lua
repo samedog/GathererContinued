@@ -27,6 +27,7 @@
 ]]
 Gatherer_RegisterRevision("$URL: http://svn.norganna.org/gatherer/tags/REL_7.3.1/Gatherer/GatherMain.lua $", "$Rev: 967 $")
 
+print("GatherMain.lua loaded")
 
 Gatherer.Var.Version="7.3.1"
 if (Gatherer.Var.Version == "<%".."version%>") then

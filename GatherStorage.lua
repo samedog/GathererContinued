@@ -158,6 +158,7 @@ local validGatherTypes = {
 	ARCH = "ARCH",
 }
 function lib.AddNode(nodeName, gatherType, inMapID, gatherX, gatherY, source, incrementCount, indoorFloor)
+    print("called function lib.AddNode with vars: nodeName: "..nodeName.." | gatherType: "..gatherType.." | inMapID: "..inMapID.." | gatherX: "..gatherX.." | gatherY: "..gatherY.." | source: "..source.." | increment: "..incrementCount.." | indoorFloor: "..indoorFloor)
 	argcheck(nodeName, 1, "number", "string");
 	argcheck(gatherType, 2, "string", "nil");
 	argcheck(inMapID, 3, "number", "string");

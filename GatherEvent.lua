@@ -28,7 +28,7 @@
 	Event handling routines
 ]]
 Gatherer_RegisterRevision("$URL: http://svn.norganna.org/gatherer/tags/REL_7.3.1/Gatherer/GatherEvent.lua $", "$Rev: 1154 $")
-
+print("GatherEvent.lua loaded")
 local _tr = Gatherer.Locale.Tr
 local _trC = Gatherer.Locale.TrClient
 local _trL = Gatherer.Locale.TrLocale
@@ -36,6 +36,11 @@ local _trL = Gatherer.Locale.TrLocale
 local ArchTimer = 0
 
 function Gatherer.Event.RegisterEvents( frame )
+    print("function Gatherer.Event.RegisterEvents() called with vars: ")
+    for k,v in pairs(frame)do
+        print("key: "..k)
+    end
+    
 	--frame:RegisterEvent("WORLD_MAP_UPDATE")
 	frame:RegisterEvent("WORLD_MAP_CLOSE"); -- never triggered apparently
 	--frame:RegisterEvent("LEARNED_SPELL_IN_TAB"); -- follow current skills
@@ -62,6 +67,7 @@ function Gatherer.Event.RegisterEvents( frame )
 end
 
 function Gatherer.Event.OnLoad()
+    print("function Gatherer.Event.OnLoad() loaded")
 	Gatherer_Manifest.Validate()
 	
 	Gatherer.SpecialCases.ProcessSpecialCases()
@@ -93,6 +99,7 @@ function Gatherer.Event.OnLoad()
 end
 
 function Gatherer.Event.OnEvent( event, ... )
+    print("function Gatherer.Event.OnEvent() loaded")
 	if (event == "PLAYER_ENTERING_WORLD" ) then
 		Gatherer.MiniNotes.Show()
 
@@ -195,6 +202,7 @@ function Gatherer.Event.OnEvent( event, ... )
 	
 	elseif ( event ) then
 		Gatherer.Util.Debug("Gatherer Unknown event: "..event)
+		print("Gatherer Unknown event: "..event)
 	end
 end
 

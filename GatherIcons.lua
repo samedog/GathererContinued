@@ -33,7 +33,7 @@
 		and upload your data.
 		Wowhead Client: http://www.wowhead.com/?client
 ]]
-
+print("GatherIcons.lua loaded")
 Gatherer.Icons = {
 	[324] = "Mine\\Thorium", -- Small Thorium Vein
 	[1731] = "Mine\\Copper", -- Copper Vein
@@ -88,6 +88,7 @@ Gatherer.Icons = {
 	[272768] = "Mine\\EmpyriumDeposit", -- Empyrium Deposit
 	[272778] = "Mine\\EmpyriumDeposit", -- Rich Empyrium Deposit
 	[272780] = "Mine\\EmpyriumSeam", -- Empyrium Seam
+	[966690] = "Mine\\LaestriteDeposit",
 
 
 	[1617] = "Herb\\Silverleaf", -- Silverleaf

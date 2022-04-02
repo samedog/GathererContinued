@@ -33,7 +33,7 @@
 		and upload your data.
 		Wowhead Client: http://www.wowhead.com/?client
 ]]
-
+print("GatherCategories.lua loaded")
 -- functions needed from the global environment
 local pairs = pairs
 local type = type
@@ -51,6 +51,7 @@ local metatable = {
 }
 setmetatable( Gatherer.Categories, metatable )
 setfenv(1, Gatherer.Categories)
+
 
 
 -- Mapping of Object IDs to categories
@@ -329,6 +330,8 @@ CategoryNames = {
 	["ORE_EMPYRIUM"] = 272768,  -- Empyrium Deposit
 	["ORE_REMPYRIUM"] = 272778,  -- Rich Empyrium Deposit
 	["ORE_SEAMEMPYRIUM"] = 272780,  -- Empyrium Seam
+	["ORE_LAESTRITE"] = 171828, -- laestrite ore
+	["ORE_LAESTRITE"] = 171829, --solenium ore
 
 	-- Herbs
 	["HERB_BRIARTHORN"] = 1621, -- Briarthorn

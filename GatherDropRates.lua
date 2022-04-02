@@ -26,7 +26,7 @@
 		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
 ]]
 Gatherer_RegisterRevision("$URL: http://svn.norganna.org/gatherer/tags/REL_7.3.1/Gatherer/GatherDropRates.lua $", "$Rev: 1129 $")
-
+print("GatherDropRates.lua loaded")
 local dbVersion = 5
 
 local ArchaeologyCurrencies_DropRateConversions = {
@@ -44,6 +44,7 @@ local ArchaeologyCurrencies_DropRateConversions = {
 }
 
 function Gatherer.DropRates.Load()
+    print("function Gatherer.DropRates.Load() called")
 	local data = Gatherer_DropRates
 	
 	if ( type(data) ~= "table" ) then
@@ -148,10 +149,12 @@ function Gatherer.DropRates.Load()
 end
 
 function Gatherer.DropRates.Save()
+    print("function Gatherer.DropRates.Save() called")
 	Gatherer_DropRates = Gatherer.DropRates.Data
 end
 
 function Gatherer.DropRates.ProcessDrops( objectId, zone, source, coins, loot )
+    print("function Gatherer.DropRates.ProcessDrops() called with vars: objectId: "..objectId.." | zone: "..zone.." | source: "..source.." | coins: "..coins.." | loot: "..loot)
 	if not ( loot ) then return end
 	local zoneToken = Gatherer.ZoneTokens.GetZoneToken(zone)
 	if not zoneToken then

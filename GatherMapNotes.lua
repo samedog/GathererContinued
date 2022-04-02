@@ -39,16 +39,19 @@ local HBD = LibStub("HereBeDragons-2.0")
 local HBDP = LibStub("HereBeDragons-Pins-2.0")  
 
 function Gatherer.MapNotes.Enable()
+    print("called function Gatherer.MapNotes.Enable() ")
 	Gatherer.Config.SetSetting("mainmap.enable", true)
 	Gatherer.MapNotes.Update()
 end
 
 function Gatherer.MapNotes.Disable()
+    print("called function Gatherer.MapNotes.Disable()")
 	Gatherer.Config.SetSetting("mainmap.enable", false)
 	Gatherer.MapNotes.Update()
 end
 
 function Gatherer.MapNotes.ToggleDisplay()
+    print("called fcuntion Gatherer.MapNotes.ToggleDisplay()")
 	if ( Gatherer.Config.GetSetting("mainmap.enable") ) then
 		Gatherer.MapNotes.Disable()
 	else
@@ -57,6 +60,7 @@ function Gatherer.MapNotes.ToggleDisplay()
 end
 
 function Gatherer.MapNotes.Update()
+    print("called function Gatherer.MapNotes.Update()")
 	if ( Gatherer.Config.GetSetting("mainmap.enable") ) then
 		GathererMapOverlayParent:Show()
 	else
@@ -66,22 +70,24 @@ end
 
 -- seems like hooksecurefunc is rarely used now for adding buttons and such to the map
 -- gonna try the new template syntax
-hooksecurefunc(WorldMapFrame.UIElementsFrame.TrackingOptionsButton.DropDown , "initialize", function()
-	UnitPopup_AddDropDownButton({}, UnitPopupButtons["SUBSECTION_SEPARATOR"], "SUBSECTION_SEPARATOR", UIDROPDOWNMENU_MENU_LEVEL);
-	local info = {}
-	info.text = _tr("BINDING_HEADER_GATHERER")..": ".._tr("MAP_NOTES_SHOW")
-	info.value = "gatherer.mainmap.enable"
-	info.func = Gatherer.MapNotes.ToggleDisplay
-	info.checked = Gatherer.Config.GetSetting("mainmap.enable")
-	info.isNotRadio = true;
-	info.keepShownOnClick = 1
-	UIDropDownMenu_AddButton(info)
-end)
+--hooksecurefunc(WorldMapFrame.UIElementsFrame.TrackingOptionsButton.DropDown , "initialize", function()
+--	UnitPopup_AddDropDownButton({}, UnitPopupButtons["SUBSECTION_SEPARATOR"], "SUBSECTION_SEPARATOR", UIDROPDOWNMENU_MENU_LEVEL);
+--	local info = {}
+--	info.text = _tr("BINDING_HEADER_GATHERER")..": ".._tr("MAP_NOTES_SHOW")
+--	info.value = "gatherer.mainmap.enable"
+--	info.func = Gatherer.MapNotes.ToggleDisplay
+--	info.checked = Gatherer.Config.GetSetting("mainmap.enable")
+--	info.isNotRadio = true;
+--	info.keepShownOnClick = 1
+--	UIDropDownMenu_AddButton(info)
+--end)
+-- maybve we dont even need this since the miniap has everything ??
 
 
 
 
 function Gatherer.MapNotes.GetNoteObject( noteNumber )
+    print("function Gatherer.MapNotes.GetNoteObject() with value noteNumber: "..noteNumber)
 	local button = _G["GatherMain"..noteNumber]
 	if not ( button ) then
 		local overlayFrameNumber = math.ceil(noteNumber / 100)
@@ -93,6 +99,7 @@ function Gatherer.MapNotes.GetNoteObject( noteNumber )
 		button = CreateFrame("Button" ,"GatherMain"..noteNumber, overlayFrame, "GatherMainTemplate")
 		button:SetID(noteNumber)
 		overlayFrame[(noteNumber-1) % 100 + 1] = button
+		print("create id "..noteNumber.." frame ".. overlayFrameNumber)
 		Gatherer.Util.Debug("create id "..noteNumber.." frame ".. overlayFrameNumber)
 	end
 	return button
@@ -100,6 +107,7 @@ end
 
 
 function Gatherer.MapNotes.MapDraw()
+    print("function Gatherer.MapNotes.MapDraw()")
 	local GathererMapOverlayParent = GathererMapOverlayParent
 	if not ( GathererMapOverlayParent:IsVisible() ) then
 		return
@@ -157,7 +165,8 @@ function Gatherer.MapNotes.MapDraw()
 							mainNote:EnableMouse(false)
 						end
 						
-						HBDPins:AddWorldMapIconMap(self, WorldMapButton, mapID,xPos, yPos, 1)
+						print("call to here be dragons")
+						HBDPins:AddWorldMapIconMap(self, WorldMapButton, mapID,xPos, yPos, 1) --is this even working???
 						--Astrolabe:PlaceIconOnWorldMap(WorldMapButton, mainNote, mapID, mapFloor, xPos, yPos)
 					else -- reached note limit
 						break
@@ -188,12 +197,14 @@ function Gatherer.MapNotes.MapDraw()
 end
 
 function Gatherer.MapNotes.MapOverlayFrame_OnHide( frame )
+    print("function Gatherer.MapNotes.MapOverlayFrame_OnHide()")
 	for _, childFrame in ipairs(frame) do
 		childFrame:Hide()
 	end
 end
 
 function Gatherer.MapNotes.MapNoteOnEnter(frame)
+    print("function Gatherer.MapNotes.MapNoteOnEnter()")
 	local setting = Gatherer.Config.GetSetting
 	
 	local enabled = setting("mainmap.tooltip.enable")

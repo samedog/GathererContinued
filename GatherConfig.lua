@@ -32,7 +32,7 @@ Gatherer_RegisterRevision("$URL: http://svn.norganna.org/gatherer/tags/REL_7.3.1
 local _tr = Gatherer.Locale.Tr
 local _trC = Gatherer.Locale.TrClient
 local _trL = Gatherer.Locale.TrLocale
-
+print("GatherConfig.lua loaded")
 Gatherer.Settings = {}
 
 local metatable = { __index = getfenv(0) }

@@ -28,7 +28,7 @@
 		since that is it's designated purpose as per:
 		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
 ]]
-
+print("GatherManifest.lua loaded")
 if (Gatherer_Manifest) then return end
 
 Gatherer_Manifest = { }
@@ -39,6 +39,8 @@ manifest.dist = {
 --[[<%revisions%>]]}
 
 function manifest.RegisterRevision(path, revision)
+    --print("called function manifest.RegisterRevision() with vars path: "..path.." | revision: "..revision)
+	print("called function manifest.RegisterRevision()")
 	local _,_, file = path:find("%$URL: .*/gatherer/([^%$]+) %$")
 	local _,_, rev = revision:find("%$Rev: (%d+) %$")
 	if not file then return end
@@ -53,6 +55,7 @@ Gatherer_RegisterRevision = manifest.RegisterRevision
 
 
 function manifest.ShowMessage(msg)
+    print("called function manifest.ShowMessage() with var msg: "..msg)
 	local messageFrame = manifest.messageFrame
 	if not messageFrame then
 		messageFrame = CreateFrame("Frame", "", UIParent)
@@ -87,6 +90,7 @@ function manifest.ShowMessage(msg)
 end
 
 function manifest.Validate()
+    print("function manifest.Validate()")
 	local matches = true
 	for file, revision in pairs(manifest.dist) do
 		local current = manifest.revs[file]
