@@ -7,6 +7,7 @@ Astrolabe is kept to check functions inner workings and make necessary changes t
 
 TODO:
 
+- fix UiMapIDs in GatherZoneTokens.lua [:o:]
 - fix hooksecurefunc() or replace with another method  [:o:]
 - config window             [:heavy_check_mark:]
 - CreateFrame() to new syntax   [:o:]
